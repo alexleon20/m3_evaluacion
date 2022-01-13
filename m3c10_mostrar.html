@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <button class="waves-effect waves-light btn" onclick="mostrar();">Mostar lista</button>
+
+
+        <p id="mostrarr"></p>
+
+        Eliminar producto: <input type="text" name="quitar" id="quitar">  
+        <button class="waves-effect waves-light btn" onclick="borrar();">borrar</button>
+
+        <p id="demoborrar"></p>
+
+        Modificar cantidad: <input type="text" name="descontar" name="descontar" id="descontar" >
+        <button class="waves-effect waves-light btn" onclick="desco();">Modificar</button>
+        <p id="descontarr"></p>
+
+    
+
+
+        <script>
+
+            function mostrar(){
+            let tex="<table border='1'>";
+                tex+="<tr><td>nombre</td><td>valor Unitario</td><td>cantidad</td></tr>";
+                for (var i = 0; i < lista.length; i++) {
+                    tex+="<tr><td>"+lista[i].nombre+
+					    "</td><td>"+lista[i].valor+
+						"</td><td>"+lista[i].cantidad+
+                        "</td></tr>";                   
+                }
+                tex+="</td></tr>";
+                document.getElementById('mostrarr').innerHTML=tex;
+        }
+        </script>
+
+        
+
+
+
+
+
+</body>
+</html>

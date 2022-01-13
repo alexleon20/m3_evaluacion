@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio en clases M3C10</title>
+
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+             
+              
+</head>
+<body>
+
+    <h2></h2>
+
+    <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Alexander Tarea</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a onclick="ingreso(); "href="#">Ingreso de productos</a></li>
+        <li><a onclick="mostrarLis(); "href="#">Mostrar lista</a></li>
+        <li><a onclick="comprar();" href="#">Genererar compra</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <p id="mostrar"></p>  
+
+  <script>
+    let lista=[];
+
+    function ingreso(){
+      async function getFile(){
+        let promesa= new Promise(function(resolve){
+          let req= new XMLHttpRequest();
+          req.open('GET' , 'm3c10_ingresar.html');
+          req.onload= function(){
+            if(req.status==200){
+              resolve(req.response);
+            }
+            else{
+              resolve("error, archivo no encontrado");
+            }
+          };
+          req.send();
+        });
+        document.getElementById('mostrar').innerHTML=await promesa;
+      }
+      getFile();
+    }
+
+
+    function mostrarLis(){
+      async function getFile(){
+        let promesa= new Promise(function(resolve){
+          let req= new XMLHttpRequest();
+          req.open('GET' , 'm3c10_mostrar.html');
+          req.onload= function(){
+            if(req.status==200){
+              resolve(req.response);
+            }
+            else{
+              resolve("error, archivo no encontrado");
+            }
+          };
+          req.send();
+        });
+        document.getElementById('mostrar').innerHTML=await promesa;
+      }
+      getFile();
+    }
+
+
+    function comprar(){  
+      async function getFile(){
+        let promesa= new Promise(function(resolve){
+          let req= new XMLHttpRequest();
+          req.open('GET' , 'm3c10_comprar.html');
+          req.onload= function(){
+            if(req.status==200){
+              resolve(req.response);
+            }
+            else{
+              resolve("error, archivo no encontrado");
+            }
+          };
+          req.send();
+        });
+        document.getElementById('mostrar').innerHTML=await promesa;
+      }
+      getFile();
+    }
+
+      //funcion por enterner mejor
+      function obj(nombre,valor,cantidad){
+         this.nombre=nombre;
+         this.valor=valor;
+         this.cantidad=cantidad;
+         this.total=valor*cantidad;
+      }
+
+
+    function ingresar(){
+         let no=document.getElementById('nom').value;
+         let va=parseInt(document.getElementById('val').value);
+         let ca=parseInt(document.getElementById('can').value);
+         let total=va*ca;
+         let lis=new obj(no,va,ca,total);
+         lista.push(lis);
+         document.getElementById('nom').value="";
+         document.getElementById('val').value="";
+         document.getElementById('can').value="";  
+      }
+
+
+      function mostrar(){
+            let tex="<table border='1'>";
+                tex+="<tr><td>nombre</td><td>valor Unitario</td><td>cantidad</td></tr>";
+                for (var i = 0; i < lista.length; i++) {
+                    tex+="<tr><td>"+lista[i].nombre+
+					    "</td><td>"+lista[i].valor+
+						"</td><td>"+lista[i].cantidad+
+                        "</td></tr>";                   
+                }
+                tex+="</td></tr>";
+                document.getElementById('mostrarr').innerHTML=tex;
+        }
+
+        
+
+       // metodos eliminar producto y descontar prodcuto 
+
+       //no funciona seguir buscando porque 
+       /* 
+        function borrar(){
+
+        let prodlist = document.getElementById("quitar").value
+
+          for( var i = 0; i < lista.length; i++){ 
+                alert(lista[i].producto)
+              if (prodlist == lista[i].producto) { 
+                  lista.splice(i, 1); 
+              }
+        
+          } 
+          document.getElementById("demoborrar").innerHTML=await promesa;
+
+        }
+
+*/
+      
+//codigo eliminado 
+
+
+
+
+
+
+//codigo no responde eliminado 
+
+
+
+
+  </script>
+  
+
+
+    
+    
+</body>
+</html>
